@@ -1,8 +1,4 @@
-![Screenshot 2024-04-12 083729](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/32f01f9a-38de-4320-8d8a-c98b46b3e836)# 4.Execution_of_NetworkCommands
-
-## Developed By : DHARANA ADITYA
-## Register No  : 212223040035
-
+# 4a.Execution_of_NetworkCommands
 ## AIM :Use of Network commands in Real Time environment
 ## Software : Command Prompt And Network Protocol Analyzer
 ## Procedure: To do this EXPERIMENT- follows these steps:
@@ -30,26 +26,41 @@ This commands includes
 • Other IP Commands e.g. show ip route etc.
 <BR>
 
-## Output
-IPCONFIG:
-![Screenshot 2024-04-12 083328](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/3cd3d506-9e95-4c7c-a9e9-25a4adf08693)
+## PROGRAM
+## CLIENT:
+import socket 
+from pythonping import ping 
+s=socket.socket() 
+s.bind(('localhost'8000)) 
+s.listen(5) 
+c,addr=s.accept() 
+while True: 
+    hostname=c.recv(1024).decode() 
+    try: 
+        c.send(str(ping(hostname, verbose=False)).encode()) 
+    except KeyError: 
+        c.send("Not Found".encode())
+## SERVER:
+import socket 
+s=socket.socket() 
+s.connect(('localhost',8000)) 
+while True: 
+    ip=input("Enter the website you want to ping ") 
+    s.send(ip.encode()) 
+    print(s.recv(1024).decode())
+## OUTPUT
+## PING COMMAND:
+## CLIENT:
+![325101129-3104feb5-6a1d-41bc-bcf1-88a451a6f2f2](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/7e72baee-5248-4046-9af5-39b7093b8fd2)
 
-NBTSTAT:
-![Screenshot 2024-04-12 083442](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/e89f13ea-e1b9-4e3c-9d8e-867e257ce3f3)
 
-TRACERT:
-![Screenshot 2024-04-12 083648](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/860ec0ba-791b-435a-9c1d-d0e01bf54ce0)
-
-PING:
-![Screenshot 2024-04-12 083659](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/db165598-7afb-4211-8aeb-86187f328230)
+## SERVER:
+![325101177-455acf80-50ec-4a8c-af04-fb9049018eaa](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/11c4e980-5b03-4cee-bcb5-36fdd58f10d2)
 
 
-NETSTAT:
-![Screenshot 2024-04-12 083729](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/2b49ed4a-6ee6-4c9c-8878-70259ee94b8a)
-![Screenshot 2024-04-12 083752](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/1a2064b2-1b46-42b3-b808-86d63c07aa93)
+## TRACERT COMMAND:
+![325101228-7c0aa54e-ccd4-4069-a0d7-9d684004875f](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/6de793df-2498-4c69-a39f-43e731417465)
 
-GETMAC:
-![Screenshot 2024-04-12 083800](https://github.com/DharanAditya/4.Execution_of_NetworkCommends/assets/147473834/aa1aef8e-1501-45d2-91dc-aae77abbd8ca)
 
-Result:
-Thus Execution of Network commands Performed
+## Result
+Thus Execution of Network commands Performed.
